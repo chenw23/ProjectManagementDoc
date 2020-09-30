@@ -11,7 +11,12 @@ author:
   - Huang, Huiru^[Equal Contribution, Fudan University, 17302010080 (17302010080@fudan.edu.cn)]
 date: "2020年10月8日"
 documentclass: ctexart
-output: pdf_document
+output:
+  rticles::ctex:
+    fig_caption: yes
+    number_sections: yes
+    keep_md: yes
+    keep_tex: yes
 classoption: "hyperref, a4paper"
 bibliography: biblio.bib
 ---
