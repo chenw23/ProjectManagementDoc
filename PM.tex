@@ -1,0 +1,773 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  hyperref, a4paper]{ctexart}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdfauthor={Shi, Ruixin; Zhang, Cenyuan; Zhang, Yihan; Wang, Chen; Zhang, Hongnian; Song, Puqi; Huang, Huiru},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{multirow}
+\usepackage{float}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  {\par}
+
+\title{\vspace{2in}
+
+项目管理计划书}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{DCGAN-tensorflow}
+\author{Shi, Ruixin\footnote{Equal Contribution, Fudan University,
+  17302010065
+  (\href{mailto:rxshi17@fudan.edu.cn}{\nolinkurl{rxshi17@fudan.edu.cn}})} \and Zhang,
+Cenyuan\footnote{Equal Contribution, Fudan University, 17302010068
+  (\href{mailto:cenyuanzhang17@fudan.edu.cn}{\nolinkurl{cenyuanzhang17@fudan.edu.cn}})} \and Zhang,
+Yihan\footnote{Equal Contribution, Fudan University, 17302010076
+  (\href{mailto:zhangyihan17@fudan.edu.cn}{\nolinkurl{zhangyihan17@fudan.edu.cn}})} \and Wang,
+Chen\footnote{Equal Contribution, Fudan University, 16307110064
+  (\href{mailto:wangc16@fudan.edu.cn}{\nolinkurl{wangc16@fudan.edu.cn}})} \and Zhang,
+Hongnian\footnote{Equal Contribution, Fudan University, 17302010061
+  (\href{mailto:17302010061@fudan.edu.cn}{\nolinkurl{17302010061@fudan.edu.cn}})} \and Song,
+Puqi\footnote{Equal Contribution, Fudan University, 17302010037
+  (\href{mailto:17302010037@fudan.edu.cn}{\nolinkurl{17302010037@fudan.edu.cn}})} \and Huang,
+Huiru\footnote{Equal Contribution, Fudan University, 17302010080
+  (\href{mailto:17302010080@fudan.edu.cn}{\nolinkurl{17302010080@fudan.edu.cn}})}}
+\date{2020年10月8日}
+
+\begin{document}
+\maketitle
+
+\newpage
+
+\LARGE
+
+\begin{center}
+\textbf{项目管理计划书}
+\end{center}
+
+\large
+\begin{center}
+\textbf{\emph{DCGAN-tensorflow}}
+\end{center}
+
+\hypertarget{ux9879ux76eeux6458ux8981}{%
+\section*{项目摘要}\label{ux9879ux76eeux6458ux8981}}
+\addcontentsline{toc}{section}{项目摘要}
+
+深卷积生成对抗网络的 Tensorflow 实现
+
+\hypertarget{ux5173ux952eux8bcd}{%
+\section*{关键词}\label{ux5173ux952eux8bcd}}
+\addcontentsline{toc}{section}{关键词}
+
+DCGAN（ Deep Convolutional Generative Adversarial Networks）
+
+\normalsize
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\hypertarget{ux9879ux76eeux6982ux8ff0}{%
+\section{项目概述}\label{ux9879ux76eeux6982ux8ff0}}
+
+\hypertarget{ux7528ux6237ux7fa4}{%
+\subsection{用户群}\label{ux7528ux6237ux7fa4}}
+
+项目成员
+
+在本项目中，项员共有以下几位人员：
+
+\begin{itemize}
+\item
+  王宸
+\item
+  张逸涵
+\item
+  张岑媛
+\item
+  石睿欣
+\item
+  黄慧茹
+\item
+  张宏年
+\item
+  宋普琦
+\end{itemize}
+
+\hypertarget{ux9879ux76ee-ux4ea4ux4ed8ux4ea7ux54c1}{%
+\subsection{项目 交付产品}\label{ux9879ux76ee-ux4ea4ux4ed8ux4ea7ux54c1}}
+
+（1）提交文档：项目管理计划，需求规格说明等等
+（2）源程序检查：检查系统运行情况
+
+\hypertarget{ux9879ux76eeux8ba1ux5212ux4e66ux7684ux6f14ux5316}{%
+\subsection{项目计划书的演化}\label{ux9879ux76eeux8ba1ux5212ux4e66ux7684ux6f14ux5316}}
+
+\begin{itemize}
+\item
+  第一阶段：2020年9月26日-2020年9月28日
+  （1）张宏年、宋普琦：完成项目计划书框架，写入Rmd文档中（编译成的PDF文件\textgreater10页）
+  （2）张岑湲、黄蕙茹：分析DCGan所依赖的算法理论、预测搭建faces
+  demo所需要的技术框架、所需的人员工作量、时间工作量、时间段安排，将这些分析结果以Rmd的形式进行汇总（编译成的PDF文件\textgreater10页）
+\item
+  第二阶段：2020年9月29日-2020年10月4日
+  石睿欣、张逸涵：将上面（2）的内容填充进入（1）中并补充所缺内容，完善成为完整的项目计划书，得到可以提交的PDF文件（编译成的PDF文件\textgreater20页）
+\item
+  第三阶段：2020年10月5日-2020年10月8日 王宸：展示
+\end{itemize}
+
+\hypertarget{ux53c2ux8003ux8d44ux6599}{%
+\subsection{参考资料}\label{ux53c2ux8003ux8d44ux6599}}
+
+URL:`\url{https://github.com/soumith/dcgan.torch}'
+URLhttps://arxiv.org/abs/1511.06434' :'
+
+\hypertarget{ux6280ux672fux8fc7ux7a0b}{%
+\section{技术过程}\label{ux6280ux672fux8fc7ux7a0b}}
+
+\hypertarget{ux7b97ux6cd5ux7406ux8bba}{%
+\subsection{算法理论}\label{ux7b97ux6cd5ux7406ux8bba}}
+
+\url{https://github.com/soumith/dcgan.torch}
+\url{https://arxiv.org/abs/1511.06434}
+
+\hypertarget{ux5f00ux53d1ux5de5ux5177ux4e0eux6280ux672fux6846ux67b6}{%
+\subsection{开发工具与技术框架}\label{ux5f00ux53d1ux5de5ux5177ux4e0eux6280ux672fux6846ux67b6}}
+
+\begin{itemize}
+\item
+  Python 2.7 or Python 3.3+'
+\item
+  Tensorflow 0.12.1
+\item
+  SciPy
+\item
+  pillow
+\item
+  tqdm
+\item
+  （可选）电影（用于可视化）
+\item
+  （可选）对齐和裁剪图像.zip ： 大型名人脸数据集
+\end{itemize}
+
+\hypertarget{ux9879ux76eeux7ec4ux7ec7}{%
+\section{项目组织}\label{ux9879ux76eeux7ec4ux7ec7}}
+
+\hypertarget{ux8fc7ux7a0bux6a21ux578b}{%
+\subsection{过程模型}\label{ux8fc7ux7a0bux6a21ux578b}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+关键时间 & 任务 & 要求\tabularnewline
+\midrule
+\endhead
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux56e2ux961fux5206ux5de5ux4e0eux5408ux4f5c}{%
+\subsection{团队分工与合作}\label{ux56e2ux961fux5206ux5de5ux4e0eux5408ux4f5c}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+成员 & 角色 & 职责\tabularnewline
+\midrule
+\endhead
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+------ & ------ & ------\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux4ebaux5458ux5de5ux4f5cux91cfux9884ux4f30}{%
+\subsection{人员工作量预估}\label{ux4ebaux5458ux5de5ux4f5cux91cfux9884ux4f30}}
+
+对早期任务量所需人员的预估
+
+\hypertarget{ux4ebaux5458ux8ba1ux5212}{%
+\subsection{人员计划}\label{ux4ebaux5458ux8ba1ux5212}}
+
+\begin{itemize}
+\tightlist
+\item
+  前端网页开发：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    人员：黄慧茹、张宏年、宋普琦
+  \item
+    要求：熟悉网页开发过程
+  \end{itemize}
+\item
+  DCGAN模型训练：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    人员：王宸、张逸涵、张岑媛、石睿欣
+  \item
+    要求：熟悉DCGAN模型训练过程
+  \end{itemize}
+\item
+  项目集成与测试：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    人员：全组成员
+  \item
+    要求：耐心全面的对系统进行测试
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux9879ux76eeux8fdbux5ea6ux53caux5173ux952eux5de5ux671fux8bbeux7f6e}{%
+\section{项目进度及关键工期设置}\label{ux9879ux76eeux8fdbux5ea6ux53caux5173ux952eux5de5ux671fux8bbeux7f6e}}
+
+\hypertarget{ux9879ux76eeux65f6ux95f4ux5b89ux6392}{%
+\subsection{项目时间安排}\label{ux9879ux76eeux65f6ux95f4ux5b89ux6392}}
+
+\begin{table}[H]
+\small 
+ 
+\begin{center}
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{1.5cm}|p{1.5cm}|p{2cm}| p{2cm}|}  
+\hline  
+工作集 & 子工作 & 完成时间 & 负责人 & 最终交付物 & 描述 \\ \hline  
+\multirow{3}*{准备} & 确定小组 & 第一周 & 王宸 & 小组成员名单 & 成立开发团队\\ 
+\cline{2-6}
+~ & 搭建环境 & 第三周 & 组内各成员 & Tenserflow运行环境 & 确定开发环境 \\
+\cline{2-6}
+~ & 制定项目管理计划书 & 第三周 & 王宸 & 《项目管理计划书初稿》& 确定开发过程的规划\\
+\hline
+\multirow{2}*{确定需求} & 分析项目需求 & 第三周 & 张岑媛 & 项目初步需求 & 通过查阅资料了解项目及项目的开发需求\\
+\cline{2-6}
+~ & 需求规格说明的确认 & 第四周 & 张岑媛 & 《需求规格说明书初稿》 & 确定项目需求 \\
+\hline
+\multirow{3}*{系统设计} & 前端展示界面设计 & 第五周 & 张逸涵 & 展示网页模版 & 确定项目用于展示的网页的样子\\
+\cline{2-6}
+~ & DCGAN模型设计 & 第五周 & 张岑媛 & 模型构造与数据集 & 确定模型的层次以及需要的数据集\\
+\cline{2-6}
+~ & 系统总体设计 & 第五周 & 王宸 & 《软件设计报告初稿》 & 制定系统总体的设计方法并与需求相关联\\
+\hline
+\multirow{3}*{开发及测试} & 系统源码开发 & 第八周 & 王宸 & 源代码 & 使用相应语言开发展示网页与神经网络模型\\
+\cline{2-6}
+~ & 系统源码测试 & 第九周 & 张逸涵 & 测试文档 & 根据测试文档进行测试\\
+\cline{2-6}
+~ & 系统源码复查 & 第十周 & 张岑媛 & 源代码 & 对代码复查减少bug\\
+\hline 
+系统集成 & 前后端集成与测试 & 第十一周 & 王宸 & 完整可展示的项目 & 测试整个系统的情况 \\
+\hline
+系统交付 & 系统交付 & 第十二周 & 王宸 & 可运行系统，用户手册，技术文档 & 最终产品的交付 \\
+\hline
+
+
+\end{tabular}  
+\caption{项目进度表} 
+\end{center}  
+\end{table}
+
+\hypertarget{ux8f6fux4ef6ux7ba1ux7406ux8fc7ux7a0bux4e2dux9884ux7b97ux53caux8d44ux6e90ux5206ux914d}{%
+\subsection{软件管理过程中预算及资源分配}\label{ux8f6fux4ef6ux7ba1ux7406ux8fc7ux7a0bux4e2dux9884ux7b97ux53caux8d44ux6e90ux5206ux914d}}
+
+\begin{itemize}
+\tightlist
+\item
+  系统开发不涉及任何经济预算，工程量为 6人/天 。
+\item
+  资源分配：使用各自的电脑进行开发。
+\end{itemize}
+
+\hypertarget{ux9879ux76eeux8fdbux5ea6ux53caux5173ux952eux5de5ux671fux8bbeux7f6e-1}{%
+\subsection{项目进度及关键工期设置}\label{ux9879ux76eeux8fdbux5ea6ux53caux5173ux952eux5de5ux671fux8bbeux7f6e-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  准备工作：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    时间：第一周到第三周
+  \item
+    关键工期：项目管理计划初稿发布
+  \end{itemize}
+\item
+  需求分析：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    时间：第三周到第四周
+  \item
+    关键工期：需求规格说明书初稿发布
+  \end{itemize}
+\item
+  系统设计：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    时间：第四周到第五周
+  \item
+    关键工期：系统设计初稿发布
+  \end{itemize}
+\item
+  源代码开发与测试：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    时间：第六周到第十周
+  \item
+    关键工期：代码开发与测试
+  \end{itemize}
+\item
+  系统集成：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    时间：第十周到第十一周
+  \item
+    关键工期：系统成功测试
+  \end{itemize}
+\item
+  软件交付：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    时间：第十一周到第十二周
+  \item
+    关键工期：系统能成功并稳定运行
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux5f00ux53d1ux8fc7ux7a0bux8d44ux6e90}{%
+\subsection{开发过程资源}\label{ux5f00ux53d1ux8fc7ux7a0bux8d44ux6e90}}
+
+\begin{itemize}
+\tightlist
+\item
+  人力资源：王宸、张逸涵、张岑媛、石睿欣、黄慧茹、张宏年、宋普琦
+\item
+  场地资源：软件机房
+\item
+  软件资源：Rstudio、Tenserflow
+\item
+  数据资源：LFW、CelebA人脸数据集
+\end{itemize}
+
+\hypertarget{ux7ba1ux7406ux8fc7ux7a0b}{%
+\section{管理过程}\label{ux7ba1ux7406ux8fc7ux7a0b}}
+
+\hypertarget{ux7ba1ux7406ux76eeux6807ux53caux4f18ux5148ux7ea7}{%
+\subsection{管理目标及优先级}\label{ux7ba1ux7406ux76eeux6807ux53caux4f18ux5148ux7ea7}}
+
+\begin{itemize}
+\tightlist
+\item
+  按时按量完成项目的基本功能，按时发布产品及文档，这是本团队的最高目标。
+\item
+  遵循规范化的项目运作标准，文档严谨完整，代码注释充分，便于后续维护，这是第二目标。
+\item
+  产品运行稳定，界面友好，用户易操作。
+\item
+  注重团队建设，成员分工合理，团队成员合作默契，气氛融洽。每周的讨论会积极建言。在开发过程中积极协作。
+\item
+  项目设计和开发上有创新，有亮点。
+\end{itemize}
+
+\hypertarget{ux4f1aux8baeux65b9ux5f0f}{%
+\subsection{会议方式}\label{ux4f1aux8baeux65b9ux5f0f}}
+
+每周小组将通过钉钉会议展开讨论，并进行会议记录。
+
+\hypertarget{ux98ceux9669ux7ba1ux7406}{%
+\subsection{风险管理}\label{ux98ceux9669ux7ba1ux7406}}
+
+\begin{table}[H]
+\small 
+\begin{center}  
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{5cm}|}  
+\hline  
+风险类型 & 存在风险 & 规避方法  \\ \hline  
+进度风险 & 由于课程紧张导致最后项目无法如期完成 & 合理规划时间并在每个阶段预留空余时间 \\ \hline  
+技术风险 & 由于技术熟练程度不够导致风险 & 由专业的技术人员王宸辅导组员在代码开发上的问题 \\  \hline  
+质量风险 & 模型训练结果不理想 & 由专业的技术人员张岑媛、王宸共同监管项目质量 \\  \hline  
+工具风险 & 模型训练服务器运行过慢，数据集无法获取 & 设置备用的工具 \\  \hline  
+人力资源风险 & 人员因故不能参与开发 & 小组共7人，工程量设置为6人/天，留有空余 \\  \hline  
+\end{tabular}  
+\end{center}  
+\end{table}
+
+\hypertarget{ux76d1ux7763ux53caux63a7ux5236ux673aux5236}{%
+\subsection{监督及控制机制}\label{ux76d1ux7763ux53caux63a7ux5236ux673aux5236}}
+
+\begin{itemize}
+\tightlist
+\item
+  组员需以周为单位记录个人工作进展。
+\item
+  小组会议以周为单位展开，各组员需要汇报，沟通交流一周成果，遇到的问题等。
+\item
+  组长对组员的汇报进行整合，通过组内讨论提出项目潜在问题，解决方式与下周目标。
+\item
+  专人负责对每次会议内容进行记录。
+\end{itemize}
+
+\hypertarget{ux8ba1ux5212ux66f4ux65b0ux7b56ux7565}{%
+\subsection{计划更新策略}\label{ux8ba1ux5212ux66f4ux65b0ux7b56ux7565}}
+
+在发生如下事件时，修订项目计划和参考文档:
+
+\begin{itemize}
+\tightlist
+\item
+  到达某里程碑，在每个阶段结束后如果必要的话修订项目计划
+\item
+  项目的范围发生变化
+\item
+  当风险成为现实时采取了相应的行动
+\item
+  当进度、工作量超出控制的范围并需要采取纠正行动时
+\end{itemize}
+
+\hypertarget{ux8d28ux91cfux4fddux8bc1ux6d3bux52a8}{%
+\subsection{质量保证活动}\label{ux8d28ux91cfux4fddux8bc1ux6d3bux52a8}}
+
+\begin{itemize}
+\tightlist
+\item
+  内部审核
+
+  \begin{itemize}
+  \tightlist
+  \item
+    组员对自己的开发代码进行审核，并组内成员互相审核正确性。
+  \end{itemize}
+\item
+  阶段审核
+
+  \begin{itemize}
+  \tightlist
+  \item
+    项目到达里程碑阶段时由组长再次进行审核。
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{gan}{%
+\section{GAN}\label{gan}}
+
+生成式对抗网络GAN是一种生成式模型，灵感来自于零和博弈的思想。整个系统由两部分组成，生成模型G和判别模型D，通过两者的博弈，来使生成模型学习到数据的分布。
+生成模型仿照真实数据样本的分布，从一个随机噪声z中生成一个输入并训练自己骗过判别模型，使之认为其生成的输入都是真实的，而判别模型则试图区分真实输入与生成的输入。原始的GAN中，生成模型和判别模型都为多层感知机，结构如图1.
+
+\begin{figure}
+\centering
+\includegraphics{1.png}
+\caption{GAN的结构}
+\end{figure}
+
+GAN的目标函数如图2，是一个极小极大博弈问题。
+
+\begin{figure}
+\centering
+\includegraphics{2.png}
+\caption{GAN的目标函数}
+\end{figure}
+
+其中，Pdata 是真实数据分布，Pz 是噪声分布，G(z) 是生成模型根据随机噪声z
+生成的模拟真实数据的假数据，D(x)
+是判别模型判断真实数据为真的概率，D(G(z))
+是判别模型判断造假数据为真的概率。
+对于判别模型D，它的目标是将真实数据判断为真，将生成模型生成的数据判断为假，也就是使式子取值尽可能大。对于生成模型G，它的目标是生成的数据能够欺骗判别模型，使式子取值尽可能小。在两个模型对抗的过程中，各自的生成能力和判别能力都在提高。
+训练过程中，交替地对生成模型和判别模型进行训练。固定生成模型G，通过梯度下降优化判别模型D，再固定判别模型D，优化生成模型G，直到达到纳什均衡。(Goodfellow
+et al. 2014)
+
+\hypertarget{dcgan}{%
+\section{DCGAN}\label{dcgan}}
+
+在DCGAN的生成模型和判别模型中，使用卷积神经网络（CNN）来代替传统GAN中的多层感知机。
+对于生成模型G，它的输入是一个100维的向量z。生成模型的第一层是一个全连接层，将100维的向量变为4×4×1024的输出，从第二层开始，使用微步卷积（fractional-strided
+convolution）来进行上采样，逐渐减少通道数，最后输出为64×64×3的矩阵。
+生成模型的结构如图3。
+
+\begin{figure}
+\centering
+\includegraphics{3.png}
+\caption{生成模型的结构}
+\end{figure}
+
+判别模型D的输入是一张图像，经过步长卷积下采样，逐渐增加通道数，最后得到的卷积特征通过全连接层，输出一个值用来判断图像是真实数据或生成的数据，结构如图4.(Radford,
+Metz, and Chintala 2015)
+
+\begin{figure}
+\centering
+\includegraphics{4.png}
+\caption{判别模型的结构}
+\end{figure}
+
+\hypertarget{ux6b65ux957fux5377ux79efux548cux5faeux6b65ux5377ux79ef}{%
+\subsection{步长卷积和微步卷积}\label{ux6b65ux957fux5377ux79efux548cux5faeux6b65ux5377ux79ef}}
+
+在DCGAN中，没有使用池化层，而是以步长卷积来进行下采样。
+在生成模型中，使用了微步卷积（fractional-strided
+convolutions）来进行上采样。上采样即去卷积，目的是将经过池化层以后缩小的矩阵扩大到一定的大小，包含转置卷积和微步卷积两种方法。以将3×3的矩阵扩大到5×5为例，去卷积的过程如图5。
+
+\begin{figure}
+\centering
+\includegraphics{./5.png}
+\caption{去卷积}
+\end{figure}
+
+而转置卷积和微步卷积的主要差别在于填充的方式不同，如图6。
+
+\begin{figure}
+\centering
+\includegraphics{./6.png}
+\caption{转置卷积和微步卷积}
+\end{figure}
+
+在判别模型中，使用了步长卷积（strided
+convolution），步长即滤波器每次移动的距离。以7×7的矩阵为例，步长为2的情况下，最后会得到3×3的输出。如图7。(Springenberg
+et al. 2014)
+
+\begin{figure}
+\centering
+\includegraphics{./7.png}
+\caption{步长卷积}
+\end{figure}
+
+\hypertarget{ux6279ux6807ux51c6ux5316}{%
+\subsection{批标准化}\label{ux6279ux6807ux51c6ux5316}}
+
+批标准化通过一定的规范化手段，将每一层的输入变换到均值为0，标准差为1的标准正态分布，可以使训练变得稳定，帮助解决不好的初始化带来的问题，使梯度可以在更深的模型中传递。这是因为整体分布逐渐向非线性的激活函数的取值区间的上下限两端趋近时，会导致反向传播时低层神经网络梯度消失，而批标准化使激活函数输入值落座在对输入较敏感的区域。同时，梯度变大意味着学习收敛速度快，能加快训练速度。
+为了保证网络的表达能力，对变换后，满足均值为0，标准差为1的x再次进行操作y=scale*x+shift，scale和shift两个参数通过训练学习到。
+批标准化的具体操作流程如图8。(Ioffe and Szegedy 2015)
+
+\begin{figure}
+\centering
+\includegraphics{./8.png}
+\caption{批标准化}
+\end{figure}
+
+GAN可能出现崩溃问题，生成器总是生成同样的样本点，无法继续学习。以图9为例，右图的十个团簇代表mnist数据集的10个模式，生成模型如果只能生成其中的几个数字而遗漏其他模式，便是出现了模式崩溃。批标准化可以避免这种问题。
+
+\begin{figure}
+\centering
+\includegraphics{9.png}
+\caption{模式崩溃}
+\end{figure}
+
+在每一层应用批标准化会导致震荡和不稳定性，所以在生成模型的输出层和判别模型的输入层不使用批标准化。
+
+\hypertarget{ux5168ux8fdeux63a5ux5c42}{%
+\subsection{全连接层}\label{ux5168ux8fdeux63a5ux5c42}}
+
+长久以来，全连接层一直是CNN的标配结构，在常见的卷积神经网络中，传统的做法是在负责对图像进行特征提取的卷积层后设置全连接层，之后再进行激活分类。但近年来也有去除全连接层的趋势，比如使用全局平均池化来替代全连接层。
+
+\begin{figure}
+\centering
+\includegraphics{./10.png}
+\caption{全连接层}
+\end{figure}
+
+其主要思想即对于输出的每一个通道的特征图的所有像素计算一个平均值，用该数值代表对应的特征图。
+
+\begin{figure}
+\centering
+\includegraphics{./11.jpg}
+\caption{全局平均池化}
+\end{figure}
+
+相较于全连接层，全局平均池化可以接受任意尺寸的图像，降低了参数量，由于全局平均池化层没有参数，也可防止在该层过拟合，同时，整合了全局空间信息，还可以更好地将类别与最后一个卷积层的特征图对应起来。但在增加了模型稳定性的同时，全局平均池化有可能降低收敛速度。因此，最终选择了直接使用卷积层连接生成器和判别器的输入层以及输出层。
+
+\hypertarget{ux6fc0ux6d3bux51fdux6570}{%
+\subsection{激活函数}\label{ux6fc0ux6d3bux51fdux6570}}
+
+激活函数的主要功能是提供网络的非线性建模能力，如果没有激活函数，网络只能表达线性映射，可以认为只有加入了激活函数之后深度神经网络才具备了分层的非线性映射学习能力。DCGAN在生成器网络中选用ReLU作为激活函数，最后一层使用Tanh。
+Tanh即双曲正切函数，它的输出和输入能够保持非线性单调上升和下降关系，输出以0为中心，比Sigmoid函数收敛速度更快，但还是没有改变Sigmoid函数最大的问题，即由于饱和性产生的梯度消失。
+
+\begin{figure}
+\centering
+\includegraphics{./12.png}
+\caption{tanh激活函数}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{./13.jpg}
+\caption{tanh激活函数}
+\end{figure}
+
+而ReLU有效缓解了梯度消失的问题，提供了神经网络的稀疏表达能力，且相较于Tanh，在SGD中能快速收敛。
+
+\begin{figure}
+\centering
+\includegraphics{./14.png}
+\caption{ReLU激活函数}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{./15.jpg}
+\caption{ReLU激活函数}
+\end{figure}
+
+GAN在判别器网络中选用了Maxout作为激活函数，它的拟合能力非常强，具有ReLU的所有优点，即线性、不饱和性，同时不会导致神经元死亡，但它会导致整体参数的数量激增。
+
+\begin{figure}
+\centering
+\includegraphics{./16.png}
+\caption{Maxout}
+\end{figure}
+
+与此相对，DCGAN选用了LeakyReLU作为激活函数，LeakyReLU也解决了神经元死亡的问题，同时，实现更为简单，在实验中表现也更好。
+
+\begin{figure}
+\centering
+\includegraphics{./17.png}
+\caption{LeakyReLU}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{./18.jpg}
+\caption{LeakyReLU}
+\end{figure}
+
+\hypertarget{ux5de5ux4f5cux91cfux8bc4ux4f30}{%
+\section{工作量评估}\label{ux5de5ux4f5cux91cfux8bc4ux4f30}}
+
+总工作量 任务\textbar 工作量（人天） ------\textbar------
+使用TensorFlow搭建模型\textbar6 获取和处理数据集\textbar5
+实现Demo\textbar12
+
+工作量分解
+任务\textbar 补充说明\textbar 需求分析\textbar 开发\textbar 测试
+------\textbar------\textbar------\textbar------\textbar------
+搭建生成模型\textbar 使用TensorFlow搭建DCGAN的生成器\textbar 无\textbar 王宸\textbar 张逸涵
+搭建判别模型\textbar 使用TensorFlow搭建DCGAN的判别器\textbar 无\textbar 张岑湲\textbar 王宸
+直接获取数据集\textbar 训练使用的数据集包括LSUN数据集，ImageNet
+1k和celebA数据集\textbar 无\textbar 石睿欣\textbar 宋普琦
+构造数据集\textbar 爬取网上社区的图片，通过openface进行修剪来构造数据集\textbar 无\textbar 张逸涵\textbar 石睿欣
+预处理数据集\textbar 调整图像大小，进行图像标准化处理\textbar 无\textbar 黄蕙茹\textbar 张宏年
+训练模型\textbar 通过优化目标函数训练模型\textbar 无\textbar 宋普琦\textbar 张岑湲
+调整模型参数\textbar 调整参数进行多次训练，在验证集和测试集上进行测试来找到性能最好的参数\textbar 无\textbar 张宏年\textbar 宋普琦
+实现Demo前端\textbar 前端需要实现一个网页，主要功能为展示生成的图像，并能显示其对应的输入z；前端网页使用vue框架来实现\textbar 张逸涵\textbar 石睿欣\textbar 王宸
+实现Demo后端\textbar 后端需要提供相应接口，使网页能够获取图像与对应的输入\textbar 张岑湲\textbar 王宸\textbar 黄蕙茹
+
+项目进度计划 任务名称\textbar 耗时（天）\textbar 开始\textbar 结束
+------\textbar------\textbar------\textbar------
+DCGAN\textbar31\textbar2020-9-26\textbar2020-10-26
+项目分析\textbar5\textbar2020-9-26\textbar2020-9-30
+搭建模型\textbar7\textbar2020-10-8\textbar2020-10-14
+获取与处理数据集\textbar5\textbar2020-10-10\textbar2020-10-14
+实现Demo\textbar14\textbar2020-10-13\textbar2020-10-26
+
+\hypertarget{refs}{}
+\begin{cslreferences}
+\leavevmode\hypertarget{ref-goodfellow2014generative}{}%
+Goodfellow, Ian, Jean Pougetabadie, Mehdi Mirza, Bing Xu, David
+Wardefarley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. 2014.
+``Generative Adversarial Nets,'' 2672--80.
+
+\leavevmode\hypertarget{ref-ioffe2015batch}{}%
+Ioffe, Sergey, and Christian Szegedy. 2015. ``Batch Normalization:
+Accelerating Deep Network Training by Reducing Internal Covariate
+Shift.'' \emph{arXiv: Learning}.
+
+\leavevmode\hypertarget{ref-radford2015unsupervised}{}%
+Radford, Alec, Luke Metz, and Soumith Chintala. 2015. ``Unsupervised
+Representation Learning with Deep Convolutional Generative Adversarial
+Networks.'' \emph{arXiv: Learning}.
+
+\leavevmode\hypertarget{ref-springenberg2014striving}{}%
+Springenberg, Jost Tobias, Alexey Dosovitskiy, Thomas Brox, and Martin
+Riedmiller. 2014. ``Striving for Simplicity: The All Convolutional
+Net.'' \emph{arXiv: Learning}.
+\end{cslreferences}
+
+\end{document}

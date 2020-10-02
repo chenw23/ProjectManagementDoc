@@ -25,9 +25,7 @@ classoption: "hyperref, a4paper"
 bibliography: biblio.bib
 ---
 
-```{r eval=FALSE, include=FALSE}
-tinytex::install_tinytex()
-```
+
 \newpage
 
 \LARGE
