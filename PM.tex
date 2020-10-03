@@ -1,55 +1,47 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
-\documentclass[
-  hyperref, a4paper]{ctexart}
+\documentclass[hyperref, a4paper]{ctexart}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdfauthor={Shi, Ruixin; Zhang, Cenyuan; Zhang, Yihan; Wang, Chen; Zhang, Hongnian; Song, Puqi; Huang, Huiru},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\usepackage[usenames,dvipsnames]{color}
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Shi, Ruixin; Zhang, Cenyuan; Zhang, Yihan; Wang, Chen; Zhang, Hongnian; Song, Puqi; Huang, Huiru},
+            pdftitle={ 项目管理计划书},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{longtable,booktabs}
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
-\usepackage{graphicx}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -58,49 +50,37 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\usepackage{multirow}
-\usepackage{float}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newenvironment{cslreferences}%
-  {\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
-  {\par}
 
-\title{\vspace{2in}
-
-项目管理计划书}
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-\subtitle{DCGAN-tensorflow}
-\author{Shi, Ruixin\footnote{Equal Contribution, Fudan University,
-  17302010065
-  (\href{mailto:rxshi17@fudan.edu.cn}{\nolinkurl{rxshi17@fudan.edu.cn}})} \and Zhang,
-Cenyuan\footnote{Equal Contribution, Fudan University, 17302010068
-  (\href{mailto:cenyuanzhang17@fudan.edu.cn}{\nolinkurl{cenyuanzhang17@fudan.edu.cn}})} \and Zhang,
-Yihan\footnote{Equal Contribution, Fudan University, 17302010076
-  (\href{mailto:zhangyihan17@fudan.edu.cn}{\nolinkurl{zhangyihan17@fudan.edu.cn}})} \and Wang,
-Chen\footnote{Equal Contribution, Fudan University, 16307110064
-  (\href{mailto:wangc16@fudan.edu.cn}{\nolinkurl{wangc16@fudan.edu.cn}})} \and Zhang,
-Hongnian\footnote{Equal Contribution, Fudan University, 17302010061
-  (\href{mailto:17302010061@fudan.edu.cn}{\nolinkurl{17302010061@fudan.edu.cn}})} \and Song,
-Puqi\footnote{Equal Contribution, Fudan University, 17302010037
-  (\href{mailto:17302010037@fudan.edu.cn}{\nolinkurl{17302010037@fudan.edu.cn}})} \and Huang,
-Huiru\footnote{Equal Contribution, Fudan University, 17302010080
+\title{\vspace{2in} 项目管理计划书\\\vspace{0.5em}{\large DCGAN-tensorflow}}
+\author{Shi, Ruixin\footnote{Equal Contribution, Fudan University, 17302010065
+  (\href{mailto:rxshi17@fudan.edu.cn}{\nolinkurl{rxshi17@fudan.edu.cn}})} \and Zhang, Cenyuan\footnote{Equal Contribution, Fudan University,
+  17302010068
+  (\href{mailto:cenyuanzhang17@fudan.edu.cn}{\nolinkurl{cenyuanzhang17@fudan.edu.cn}})} \and Zhang, Yihan\footnote{Equal Contribution, Fudan University, 17302010076
+  (\href{mailto:zhangyihan17@fudan.edu.cn}{\nolinkurl{zhangyihan17@fudan.edu.cn}})} \and Wang, Chen\footnote{Equal Contribution, Fudan University, 16307110064
+  (\href{mailto:wangc16@fudan.edu.cn}{\nolinkurl{wangc16@fudan.edu.cn}})} \and Zhang, Hongnian\footnote{Equal Contribution, Fudan University,
+  17302010061
+  (\href{mailto:17302010061@fudan.edu.cn}{\nolinkurl{17302010061@fudan.edu.cn}})} \and Song, Puqi\footnote{Equal Contribution, Fudan University, 17302010037
+  (\href{mailto:17302010037@fudan.edu.cn}{\nolinkurl{17302010037@fudan.edu.cn}})} \and Huang, Huiru\footnote{Equal Contribution, Fudan University, 17302010080
   (\href{mailto:17302010080@fudan.edu.cn}{\nolinkurl{17302010080@fudan.edu.cn}})}}
 \date{2020年10月8日}
+
+
+\usepackage{multirow}
+\usepackage{float}
+
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
 \begin{document}
 \maketitle
@@ -122,7 +102,7 @@ Huiru\footnote{Equal Contribution, Fudan University, 17302010080
 \section*{项目摘要}\label{ux9879ux76eeux6458ux8981}}
 \addcontentsline{toc}{section}{项目摘要}
 
-深卷积生成对抗网络的 Tensorflow 实现
+当前，深卷积生成对抗网络的 Tensorflow 实现
 
 \hypertarget{ux5173ux952eux8bcd}{%
 \section*{关键词}\label{ux5173ux952eux8bcd}}
@@ -144,54 +124,47 @@ DCGAN（ Deep Convolutional Generative Adversarial Networks）
 \hypertarget{ux7528ux6237ux7fa4}{%
 \subsection{用户群}\label{ux7528ux6237ux7fa4}}
 
-项目成员
-
-在本项目中，项员共有以下几位人员：
-
-\begin{itemize}
-\item
-  王宸
-\item
-  张逸涵
-\item
-  张岑湲
-\item
-  石睿欣
-\item
-  黄慧茹
-\item
-  张宏年
-\item
-  宋普琦
-\end{itemize}
+近些年来，随着互联网产业的发展，人们对于人脸需要越来越高，捏脸系统，自拍P图\ldots\ldots 人们需要塑造出具有个性化的虚拟形象，利用符号化的自我定制，表达出自我特征。我们的项目就是想为这些用户提供一种制作指定特征人脸的服务平台，满足用户定制虚拟人脸需求。
 
 \hypertarget{ux9879ux76ee-ux4ea4ux4ed8ux4ea7ux54c1}{%
 \subsection{项目 交付产品}\label{ux9879ux76ee-ux4ea4ux4ed8ux4ea7ux54c1}}
 
-（1）提交文档：项目管理计划，需求规格说明等等
-（2）源程序检查：检查系统运行情况
+\begin{itemize}
+\tightlist
+\item
+  提交文档：项目管理计划，需求规格说明
+\item
+  源程序检查：检查系统运行情况
+\end{itemize}
 
 \hypertarget{ux9879ux76eeux8ba1ux5212ux4e66ux7684ux6f14ux5316}{%
 \subsection{项目计划书的演化}\label{ux9879ux76eeux8ba1ux5212ux4e66ux7684ux6f14ux5316}}
 
 \begin{itemize}
 \item
-  第一阶段：2020年9月26日-2020年9月28日
-  （1）张宏年、宋普琦：完成项目计划书框架，写入Rmd文档中（编译成的PDF文件\textgreater10页）
+  第一阶段：2020年9月26日-2020年9月28日 \newline
+  （1）张宏年、宋普琦：完成项目计划书框架，写入Rmd文档中 \newline
   （2）张岑湲、黄蕙茹：分析DCGan所依赖的算法理论、预测搭建faces
-  demo所需要的技术框架、所需的人员工作量、时间工作量、时间段安排，将这些分析结果以Rmd的形式进行汇总（编译成的PDF文件\textgreater10页）
+  \newline demo所需要的技术框架、所需的人员工作量、时间工作量、时间段安排，将这些分析结果以Rmd的形式进行汇总
 \item
-  第二阶段：2020年9月29日-2020年10月4日
-  石睿欣、张逸涵：将上面（2）的内容填充进入（1）中并补充所缺内容，完善成为完整的项目计划书，得到可以提交的PDF文件（编译成的PDF文件\textgreater20页）
+  第二阶段：2020年9月29日-2020年10月4日 \newline
+  石睿欣、张逸涵：将上面（2）的内容填充进入（1）中并补充所缺内容，完善成为完整的项目计划书，得到可以提交的PDF文件
 \item
-  第三阶段：2020年10月5日-2020年10月8日 王宸：展示
+  第三阶段：2020年10月5日-2020年10月8日\newline 王宸：展示
 \end{itemize}
 
 \hypertarget{ux53c2ux8003ux8d44ux6599}{%
 \subsection{参考资料}\label{ux53c2ux8003ux8d44ux6599}}
 
-URL:`\url{https://github.com/soumith/dcgan.torch}'
-URLhttps://arxiv.org/abs/1511.06434' :'
+\begin{itemize}
+\tightlist
+\item
+  URL:`\url{https://github.com/soumith/dcgan.torch}'
+\item
+  URL:`\url{https://arxiv.org/abs/1511.06434}'
+\item
+  URL:`\url{https://github.com/TadasBaltrusaitis/OpenFace}'
+\end{itemize}
 
 \hypertarget{ux6280ux672fux8fc7ux7a0b}{%
 \section{技术过程}\label{ux6280ux672fux8fc7ux7a0b}}
@@ -199,8 +172,16 @@ URLhttps://arxiv.org/abs/1511.06434' :'
 \hypertarget{ux7b97ux6cd5ux7406ux8bba}{%
 \subsection{算法理论}\label{ux7b97ux6cd5ux7406ux8bba}}
 
-\url{https://github.com/soumith/dcgan.torch}
-\url{https://arxiv.org/abs/1511.06434}
+我们使用深度卷积生成对抗网络进行无监督表示学习，并将其应用在计算机视觉中。我们选取生成式对抗网络GAN。GAN是一种生成式模型，灵感来自于零和博弈的思想。整个系统由两部分组成，生成模型G和判别模型D，通过两者的博弈，来使生成模型学习到数据的分布。生成模型仿照真实数据样本的分布，从一个随机噪声z中生成一个输入并训练自己骗过判别模型，使之认为其生成的输入都是真实的，而判别模型则试图区分真实输入与生成的输入。
+在DCGAN的生成模型和判别模型中，使用卷积神经网络（CNN）来代替传统GAN中的多层感知机。对于生成模型
+G，它的输入是一个 100 维的向量 z。生成模型的第一层是一个全连接层，将
+100维的向量变为
+4×4×1024的输出，从第二层开始，使用微步卷积（fractional-strided
+convolution）来进行上采样，逐渐减少通道数，最后输出为64×64×3的矩阵。判别模型D的输入是一张图像，经过步长卷积下采样，逐渐增加通道数，最后得到的卷积特征通过全连接层，输出一个值用来判断图像是真实数据或生成的数据。
+在数据库的选择上，我们选取OpenFace
+--一种旨在用于计算机视觉和机器学习研究人员，情感计算社区以及对基于面部行为分析构建交互式应用程序感兴趣的人们的工具。OpenFace是第一个工具包，它能够进行脸部界标检测，头部姿势估计，脸部动作单位识别和注视估计，并具有用于运行和训练模型的可用源代码。此外他还具有实时性能，并且可以通过简单的网络摄像头运行，而无需任何专业硬件。非常适合我们的项目使用。
+\newline - \url{https://github.com/soumith/dcgan.torch} -
+\url{https://arxiv.org/abs/1511.06434} -
 
 \hypertarget{ux5f00ux53d1ux5de5ux5177ux4e0eux6280ux672fux6846ux67b6}{%
 \subsection{开发工具与技术框架}\label{ux5f00ux53d1ux5de5ux5177ux4e0eux6280ux672fux6846ux67b6}}
@@ -228,19 +209,22 @@ URLhttps://arxiv.org/abs/1511.06434' :'
 \hypertarget{ux8fc7ux7a0bux6a21ux578b}{%
 \subsection{过程模型}\label{ux8fc7ux7a0bux6a21ux578b}}
 
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-关键时间 & 任务 & 要求\tabularnewline
-\midrule
-\endhead
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{table}[H]
+\small 
+\begin{center}  
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{5cm}|}  
+\hline  
+ 关键时间 & 任务 & 要求  \\ \hline  
+2020-9-26 & 项目分析开始 & 由9月26日开始，项目正式启动，相关人员开始进行项目计划设计以及相关理论研究\\  \hline
+2020-9-30 & 项目分析结束 & 到9月30日，项目分析基本结束，前期准备工作告一段落\\  \hline
+2020-10-8 & 搭建模型启动 & 到10月8日休息结束，相关人员开始进行项目模型搭建\\  \hline
+2020-10-10 & 获取与处理数据集& 10月10日，开始进行数据获取与分析 \\  \hline  
+2020-10-13 & 开始实现Demo& 10月13日开始进行网站设计开发工作 \\  \hline  
+2020-10-14 & 搭建模型与处理数据集结束& 10月14日计划已完成使用TensorFlow搭建DCGAN的生成器以及判别器和数据准备工作 \\  \hline  
+2020-10-26 & 项目实现结束 & 截止到10月26日模型调优结束，网站搭建完毕可以上线使用 \\ \hline  
+\end{tabular}  
+\end{center}  
+\end{table}
 
 \hypertarget{ux56e2ux961fux5206ux5de5ux4e0eux5408ux4f5c}{%
 \subsection{团队分工与合作}\label{ux56e2ux961fux5206ux5de5ux4e0eux5408ux4f5c}}
@@ -250,12 +234,15 @@ URLhttps://arxiv.org/abs/1511.06434' :'
 成员 & 角色 & 职责\tabularnewline
 \midrule
 \endhead
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
------- & ------ & ------\tabularnewline
+王宸 & 项目经理 &
+负责整个项目的计划、实施和控制，确保项目有质量地按时完成，参与系统设计网站搭建\tabularnewline
+黄蕙茹 & 模型结构设计师 &
+负责逻辑模型和物理模型设计，保障系统架构和数据架构稳定\tabularnewline
+张岑湲 & 模型优化 & 负责项目模型持续优化工作\tabularnewline
+张宏年 & UI设计 &
+负责项目的人机交互、操作逻辑和界面的整体设计工作\tabularnewline
+张逸涵 & 前端开发 & 负责项目前端开发\tabularnewline
+宋普琦 & 后端开发 & 负责项目后端开发\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -263,6 +250,18 @@ URLhttps://arxiv.org/abs/1511.06434' :'
 \subsection{人员工作量预估}\label{ux4ebaux5458ux5de5ux4f5cux91cfux9884ux4f30}}
 
 对早期任务量所需人员的预估
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+任务 & 工作量（人天）\tabularnewline
+\midrule
+\endhead
+项目分析 & 4\tabularnewline
+理论研究 & 4\tabularnewline
+项目计划书书写 & 4\tabularnewline
+展示准备 & 1\tabularnewline
+\bottomrule
+\end{longtable}
 
 \hypertarget{ux4ebaux5458ux8ba1ux5212}{%
 \subsection{人员计划}\label{ux4ebaux5458ux8ba1ux5212}}
@@ -704,34 +703,68 @@ GAN在判别器网络中选用了Maxout作为激活函数，它的拟合能力�
 \hypertarget{ux5de5ux4f5cux91cfux8bc4ux4f30}{%
 \section{工作量评估}\label{ux5de5ux4f5cux91cfux8bc4ux4f30}}
 
-总工作量 任务\textbar 工作量（人天） ------\textbar------
-使用TensorFlow搭建模型\textbar6 获取和处理数据集\textbar5
-实现Demo\textbar12
+\hypertarget{ux603bux5de5ux4f5cux91cf}{%
+\subsection{总工作量}\label{ux603bux5de5ux4f5cux91cf}}
 
-工作量分解
-任务\textbar 补充说明\textbar 需求分析\textbar 开发\textbar 测试
-------\textbar------\textbar------\textbar------\textbar------
-搭建生成模型\textbar 使用TensorFlow搭建DCGAN的生成器\textbar 无\textbar 王宸\textbar 张逸涵
-搭建判别模型\textbar 使用TensorFlow搭建DCGAN的判别器\textbar 无\textbar 张岑湲\textbar 王宸
-直接获取数据集\textbar 训练使用的数据集包括LSUN数据集，ImageNet
-1k和celebA数据集\textbar 无\textbar 石睿欣\textbar 宋普琦
-构造数据集\textbar 爬取网上社区的图片，通过openface进行修剪来构造数据集\textbar 无\textbar 张逸涵\textbar 石睿欣
-预处理数据集\textbar 调整图像大小，进行图像标准化处理\textbar 无\textbar 黄蕙茹\textbar 张宏年
-训练模型\textbar 通过优化目标函数训练模型\textbar 无\textbar 宋普琦\textbar 张岑湲
-调整模型参数\textbar 调整参数进行多次训练，在验证集和测试集上进行测试来找到性能最好的参数\textbar 无\textbar 张宏年\textbar 宋普琦
-实现Demo前端\textbar 前端需要实现一个网页，主要功能为展示生成的图像，并能显示其对应的输入z；前端网页使用vue框架来实现\textbar 张逸涵\textbar 石睿欣\textbar 王宸
-实现Demo后端\textbar 后端需要提供相应接口，使网页能够获取图像与对应的输入\textbar 张岑湲\textbar 王宸\textbar 黄蕙茹
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+任务 & 工作量（人天）\tabularnewline
+\midrule
+\endhead
+使用TensorFlow搭建模型 & 6\tabularnewline
+获取和处理数据集 & 5\tabularnewline
+实现Demo & 12\tabularnewline
+\bottomrule
+\end{longtable}
 
-项目进度计划 任务名称\textbar 耗时（天）\textbar 开始\textbar 结束
-------\textbar------\textbar------\textbar------
-DCGAN\textbar31\textbar2020-9-26\textbar2020-10-26
-项目分析\textbar5\textbar2020-9-26\textbar2020-9-30
-搭建模型\textbar7\textbar2020-10-8\textbar2020-10-14
-获取与处理数据集\textbar5\textbar2020-10-10\textbar2020-10-14
-实现Demo\textbar14\textbar2020-10-13\textbar2020-10-26
+\hypertarget{ux5de5ux4f5cux91cfux5206ux89e3}{%
+\subsection{工作量分解}\label{ux5de5ux4f5cux91cfux5206ux89e3}}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+任务 & 补充说明 & 需求分析 & 开发 & 测试\tabularnewline
+\midrule
+\endhead
+搭建生成模型 & 使用TensorFlow搭建DCGAN的生成器 & 无 & 王宸 &
+张逸涵\tabularnewline
+搭建判别模型 & 使用TensorFlow搭建DCGAN的判别器 & 无 & 张岑湲 &
+王宸\tabularnewline
+直接获取数据集 & 训练使用的数据集包括LSUN数据集，ImageNet
+1k和celebA数据集 & 无 & 石睿欣 & 宋普琦\tabularnewline
+构造数据集 & 爬取网上社区的图片，通过openface进行修剪来构造数据集 & 无 &
+张逸涵 & 石睿欣\tabularnewline
+预处理数据集 & 调整图像大小，进行图像标准化处理 & 无 & 黄蕙茹 &
+张宏年\tabularnewline
+训练模型 & 通过优化目标函数训练模型 & 无 & 宋普琦 &
+张岑湲\tabularnewline
+调整模型参数 &
+调整参数进行多次训练，在验证集和测试集上进行测试来找到性能最好的参数 &
+无 & 张宏年 & 宋普琦\tabularnewline
+实现Demo前端 &
+前端需要实现一个网页，主要功能为展示生成的图像，并能显示其对应的输入z；前端网页使用vue框架来实现
+& 张逸涵 & 石睿欣 & 王宸\tabularnewline
+实现Demo后端 & 后端需要提供相应接口，使网页能够获取图像与对应的输入 &
+张岑湲 & 王宸 & 黄蕙茹\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux9879ux76eeux8fdbux5ea6ux8ba1ux5212}{%
+\subsection{项目进度计划}\label{ux9879ux76eeux8fdbux5ea6ux8ba1ux5212}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+任务名称 & 耗时（天） & 开始 & 结束\tabularnewline
+\midrule
+\endhead
+DCGAN & 31 & 2020-9-26 & 2020-10-26\tabularnewline
+项目分析 & 5 & 2020-9-26 & 2020-9-30\tabularnewline
+搭建模型 & 7 & 2020-10-8 & 2020-10-14\tabularnewline
+获取与处理数据集 & 5 & 2020-10-10 & 2020-10-14\tabularnewline
+实现Demo & 14 & 2020-10-13 & 2020-10-26\tabularnewline
+\bottomrule
+\end{longtable}
 
 \hypertarget{refs}{}
-\begin{cslreferences}
 \leavevmode\hypertarget{ref-goodfellow2014generative}{}%
 Goodfellow, Ian, Jean Pougetabadie, Mehdi Mirza, Bing Xu, David
 Wardefarley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. 2014.
@@ -751,6 +784,5 @@ Networks.'' \emph{arXiv: Learning}.
 Springenberg, Jost Tobias, Alexey Dosovitskiy, Thomas Brox, and Martin
 Riedmiller. 2014. ``Striving for Simplicity: The All Convolutional
 Net.'' \emph{arXiv: Learning}.
-\end{cslreferences}
 
 \end{document}
