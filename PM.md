@@ -10,6 +10,7 @@ author:
   - Zhang, Hongnian^[Equal Contribution, Fudan University, 17302010061 (17302010061@fudan.edu.cn)]
   - Song, Puqi^[Equal Contribution, Fudan University, 17302010037 (17302010037@fudan.edu.cn)]
   - Huang, Huiru^[Equal Contribution, Fudan University, 17302010080 (17302010080@fudan.edu.cn)]
+  - Tian, Ziwei^[Equal Contribution, Fudan University, 17302010071 (17302010071@fudan.edu.cn)]
 date: "2020年10月8日"
 documentclass: ctexart
 output:
@@ -23,6 +24,8 @@ output:
       float: null
 classoption: "hyperref, a4paper"
 bibliography: biblio.bib
+header-includes:
+   - \usepackage{array}
 ---
 
 
@@ -142,14 +145,30 @@ DCGAN的生成器接受一个一百维的噪声向量，生成一张64×64×3的
 \end{table}
 
 ## 团队分工与合作
-| 成员| 角色 | 职责 |
-|:---|:---|:---|
-| 王宸 | 项目经理 | 负责整个项目的计划、实施和控制，确保项目有质量地按时完成，参与系统设计网站搭建 |
-| 黄蕙茹 | 模型结构设计师 | 负责逻辑模型和物理模型设计，保障系统架构和数据架构稳定 |
-| 张岑湲 | 模型优化 | 负责项目模型持续优化工作 |
-| 张宏年 | UI设计 | 负责项目的人机交互、操作逻辑和界面的整体设计工作 |
-| 张逸涵 | 前端开发 | 负责项目前端开发 |
-| 宋普琦 | 后端开发 | 负责项目后端开发 |
+\begin{table}[H]
+\small 
+\begin{center}  
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{5cm}||p{5cm}|}  
+\hline 
+成员 & 角色 & 职责 & 个人背景介绍    \\ \hline  
+王宸 & 项目经理 & 负责整个项目的计划、实施和控制，确保项目有质量地按时完成，参与系统设计网站搭建 
+& 在深度学习，神经网络，后端开发，web开发等方面均有丰富的国际学术交流项目经验，竞赛项目经验及个人独立开发项目经验；曾获得全国数学建模竞赛一等奖等各种奖项，复旦大学优秀学生奖学金等诸多奖金；擅长java，C，C++，Python，SQL，PHP，JS，CSS，HTML。    \\ \hline
+黄蕙茹、石睿欣  & 模型结构设计师&负责逻辑模型和物理模型设计，保障系统架构和数据架构稳定 &黄蕙茹：
+擅长java，C，C++，Python，SQL，PHP，JS，CSS，HTML，有丰富的项目经历及开发经验。
+石睿欣： 擅长JAVA, C++, PHP, JS，Python, C, Verilog， Matlab，有丰富的项目经历与开发经验。曾获复旦大学优秀学生奖学金二等奖。曾获2019微信小程序应用开发赛华东赛区二等奖。    \\ \hline
+张岑湲、田紫薇& 模型优化 & 负责项目模型持续优化工作 & 张岑湲：
+擅长java，PHP，JS，CSS，HTML，tensotflow，有丰富的项目经历及开发经验。曾获复旦大学优秀学生奖学金。 田紫薇：
+擅长java，python，HTML，CSS，JS，有丰富的项目经历及一定的开发经验。\\ \hline
+张宏年 & UI设计 & 负责项目的人机交互、操作逻辑和界面的整体设计工作 & 
+熟悉java，python，HTML，CSS，JS，有丰富的项目经历及一定的开发经验。\\ \hline
+张逸涵 & 前端开发 & 负责项目前端开发 & 擅长Java, C/C++, Python, kotlin,HTML, CSS, JavaScript, PHP, JavaEE，MySQL，有丰富的项目经历与开发经验。曾获2019微信小程序应用开发赛华东赛区二等奖。兼具企业实习及实验室研发经验。 \\ \hline
+宋普琦 & 后端开发 & 负责项目后端开发 & 熟悉java，C++，HTML，CSS，JS，有丰富的项目经历及一定的开发经验。 \\ \hline
+
+
+\end{tabular}  
+\caption{成员分工与合作} 
+\end{center}  
+\end{table}
 ## 人员工作量预估
 对早期任务量所需人员的预估
 
@@ -402,33 +421,62 @@ GAN在判别器网络中选用了Maxout作为激活函数，它的拟合能力�
 ![LeakyReLU](./18.jpg)
 
 # 工作量评估
+
 ## 总工作量
-任务|工作量（人天）
-------|------
-使用TensorFlow搭建模型|6
-获取和处理数据集|5
-实现Demo|12
+见表5
+
+\begin{table}
+    \caption{总工作量}
+    \centering
+    \begin{tabular}{|p{4.5cm}<{\centering}|p{2.0cm}<{\centering}|}
+    \hline
+    任务               & 工作量（人天） \\ \hline
+    使用TensorFlow搭建生成模型 & 18       \\ \hline
+    使用TensorFlow搭建判别模型 & 18       \\ \hline
+    直接获取数据集         & 15       \\ \hline
+    利用爬虫生成数据集         & 21       \\ \hline
+    对总数据集进行预处理         & 6       \\ \hline
+    训练模型并调参         & 5       \\ \hline
+    实现Demo前端           & 28      \\ \hline
+    实现Demo后端         & 29       \\ \hline
+    \end{tabular}
+\end{table}
 
 
 ## 工作量分解
-任务|补充说明|需求分析|开发|测试
-------|------|------|------|------
-搭建生成模型|使用TensorFlow搭建DCGAN的生成器|无|王宸|张逸涵
-搭建判别模型|使用TensorFlow搭建DCGAN的判别器|无|张岑湲|王宸
-直接获取数据集|训练使用的数据集包括LSUN数据集，ImageNet 1k和celebA数据集|无|石睿欣|宋普琦
-构造数据集|爬取网上社区的图片，通过openface进行修剪来构造数据集|无|张逸涵|石睿欣
-预处理数据集|调整图像大小，进行图像标准化处理|无|黄蕙茹|张宏年
-训练模型|通过优化目标函数训练模型|无|宋普琦|张岑湲
-调整模型参数|调整参数进行多次训练，在验证集和测试集上进行测试来找到性能最好的参数|无|张宏年|宋普琦
-实现Demo前端|前端需要实现一个网页，主要功能为展示生成的图像，并能显示其对应的输入z；前端网页使用vue框架来实现|张逸涵|石睿欣|王宸
-实现Demo后端|后端需要提供相应接口，使网页能够获取图像与对应的输入|张岑湲|王宸|黄蕙茹
+见表6
 
+\begin{table}
+    \caption{工作量分解}
+    \centering
+    \begin{tabular}{|p{3.0cm}<{\centering}|p{5.0cm}<{\centering}|p{1.5cm}<{\centering}|p{1.5cm}<{\centering}|p{1.5cm}<{\centering}|}
+    \hline
+    任务       & 补充说明                                               & 需求分析 & 开发  & 测试  \\ \hline
+    搭建生成模型   & 使用TensorFlow搭建DCGAN的生成器                            & 无    & 王宸  & 张逸涵 \\ \hline
+    搭建判别模型   & 使用TensorFlow搭建DCGAN的判别器                            & 无    & 张岑湲 & 王宸  \\ \hline
+    直接获取数据集  & 训练使用的数据集包括LSUN数据集，ImageNet 1k和celebA数据集            & 无    & 石睿欣 & 宋普琦 \\ \hline
+    构造数据集    & 爬取网上社区的图片，通过openface进行修剪来构造数据集                     & 无    & 张逸涵 & 石睿欣 \\ \hline
+    预处理数据集   & 调整图像大小，进行图像标准化处理                                   & 无    & 黄蕙茹 & 张宏年 \\ \hline
+    训练模型     & 通过优化目标函数训练模型                                       & 无    & 宋普琦 & 张岑湲 \\ \hline
+    调整模型参数   & 调整参数进行多次训练，在验证集和测试集上进行测试来找到性能最好的参数                 & 无    & 张宏年 & 宋普琦 \\ \hline
+    实现Demo前端 & 前端需要实现一个网页，主要功能为展示生成的图像，并能显示其对应的输入z；前端网页使用vue框架来实现 & 张逸涵  & 石睿欣 & 王宸  \\ \hline
+    实现Demo后端 & 后端需要提供相应接口，使网页能够获取图像与对应的输入                         & 张岑湲  & 王宸  & 黄蕙茹 \\ \hline
+    \end{tabular}
+\end{table}
 
 ## 项目进度计划
-任务名称|耗时（天）|开始|结束
-------|------|------|------
-DCGAN|31|2020-9-26|2020-10-26
-项目分析|5|2020-9-26|2020-9-30
-搭建模型|7|2020-10-8|2020-10-14
-获取与处理数据集|5|2020-10-10|2020-10-14
-实现Demo|14|2020-10-13|2020-10-26
+见表7
+
+\begin{table}
+    \caption{项目进度计划}
+    \centering
+    \begin{tabular}{|p{2.0cm}<{\centering}|p{1.0cm}<{\centering}|p{2.0cm}<{\centering}|p{2.0cm}<{\centering}|p{2.0cm}<{\centering}|}
+    \hline
+    任务名称     & 耗时（天） & 开始         & 结束         \\ \hline
+    \textbf{DCGAN}    & \textbf{68}    & \textbf{2020-9-26}  & \textbf{2020-12-11} \\ \hline
+    项目分析     & 5     & 2020-9-26  & 2020-9-30  \\ \hline
+    搭建模型     & 18     & 2020-10-9  & 2020-10-27 \\ \hline
+    获取与处理数据集 & 20     & 2020-10-11 & 2020-11-10 \\ \hline
+    实现Demo   & 31    & 2020-11-10 & 2020-12-11 \\ \hline
+    \end{tabular}
+\end{table}
