@@ -541,8 +541,11 @@ UI设计 & 1人\tabularnewline
   \end{itemize}
 \end{itemize}
 
+\hypertarget{ux6280ux672fux5b9eux65bdux65b9ux6848}{%
+\section{技术实施方案}\label{ux6280ux672fux5b9eux65bdux65b9ux6848}}
+
 \hypertarget{gan}{%
-\section{GAN}\label{gan}}
+\subsection{GAN}\label{gan}}
 
 生成式对抗网络GAN是一种生成式模型，灵感来自于零和博弈的思想。整个系统由两部分组成，生成模型G和判别模型D，通过两者的博弈，来使生成模型学习到数据的分布。
 生成模型仿照真实数据样本的分布，从一个随机噪声z中生成一个输入并训练自己骗过判别模型，使之认为其生成的输入都是真实的，而判别模型则试图区分真实输入与生成的输入。原始的GAN中，生成模型和判别模型都为多层感知机，结构如图1.
@@ -566,7 +569,7 @@ GAN的目标函数如下，是一个极小极大博弈问题。
 et al. 2014)
 
 \hypertarget{dcgan}{%
-\section{DCGAN}\label{dcgan}}
+\subsection{DCGAN}\label{dcgan}}
 
 在DCGAN的生成模型和判别模型中，使用卷积神经网络（CNN）来代替传统GAN中的多层感知机。
 对于生成模型G，它的输入是一个100维的向量z。生成模型的第一层是一个全连接层，将100维的向量变为4×4×1024的输出，从第二层开始，使用微步卷积（fractional-strided
@@ -589,7 +592,7 @@ Metz, and Chintala 2015)
 \end{figure}
 
 \hypertarget{ux6b65ux957fux5377ux79efux548cux5faeux6b65ux5377ux79ef}{%
-\subsection{步长卷积和微步卷积}\label{ux6b65ux957fux5377ux79efux548cux5faeux6b65ux5377ux79ef}}
+\subsubsection{步长卷积和微步卷积}\label{ux6b65ux957fux5377ux79efux548cux5faeux6b65ux5377ux79ef}}
 
 在DCGAN中，没有使用池化层，而是以步长卷积来进行下采样。
 在生成模型中，使用了微步卷积（fractional-strided
@@ -620,17 +623,11 @@ et al. 2014)
 \end{figure}
 
 \hypertarget{ux6279ux6807ux51c6ux5316}{%
-\subsection{批标准化}\label{ux6279ux6807ux51c6ux5316}}
+\subsubsection{批标准化}\label{ux6279ux6807ux51c6ux5316}}
 
 批标准化通过一定的规范化手段，将每一层的输入变换到均值为0，标准差为1的标准正态分布，可以使训练变得稳定，帮助解决不好的初始化带来的问题，使梯度可以在更深的模型中传递。这是因为整体分布逐渐向非线性的激活函数的取值区间的上下限两端趋近时，会导致反向传播时低层神经网络梯度消失，而批标准化使激活函数输入值落座在对输入较敏感的区域。同时，梯度变大意味着学习收敛速度快，能加快训练速度。
 为了保证网络的表达能力，对变换后，满足均值为0，标准差为1的x再次进行操作y=scale*x+shift，scale和shift两个参数通过训练学习到。
 批标准化的具体操作流程如图8。(Ioffe and Szegedy 2015)
-
-\begin{figure}
-\centering
-\includegraphics{./8.png}
-\caption{批标准化}
-\end{figure}
 
 \[\begin{aligned}&\mathbf{Input}:\mathrm{Values\ of\ } x \mathrm{over\ a\ minibatch:}\mathcal{B}=\{x_1…m\};\mathrm{Parameters\ to\ be\ learned:}\gamma,\beta \\&\mathbf{Output:}\{y_i=\mathrm{BN_{\gamma,\beta}}(x_i)\}\end{aligned}\]
 \[\begin{aligned}
@@ -652,7 +649,7 @@ GAN可能出现崩溃问题，生成器总是生成同样的样本点，无法�
 在每一层应用批标准化会导致震荡和不稳定性，所以在生成模型的输出层和判别模型的输入层不使用批标准化。
 
 \hypertarget{ux5168ux8fdeux63a5ux5c42}{%
-\subsection{全连接层}\label{ux5168ux8fdeux63a5ux5c42}}
+\subsubsection{全连接层}\label{ux5168ux8fdeux63a5ux5c42}}
 
 长久以来，全连接层一直是CNN的标配结构，在常见的卷积神经网络中，传统的做法是在负责对图像进行特征提取的卷积层后设置全连接层，之后再进行激活分类。但近年来也有去除全连接层的趋势，比如使用全局平均池化来替代全连接层。
 
@@ -673,7 +670,7 @@ GAN可能出现崩溃问题，生成器总是生成同样的样本点，无法�
 相较于全连接层，全局平均池化可以接受任意尺寸的图像，降低了参数量，由于全局平均池化层没有参数，也可防止在该层过拟合，同时，整合了全局空间信息，还可以更好地将类别与最后一个卷积层的特征图对应起来。但在增加了模型稳定性的同时，全局平均池化有可能降低收敛速度。因此，最终选择了直接使用卷积层连接生成器和判别器的输入层以及输出层。
 
 \hypertarget{ux6fc0ux6d3bux51fdux6570}{%
-\subsection{激活函数}\label{ux6fc0ux6d3bux51fdux6570}}
+\subsubsection{激活函数}\label{ux6fc0ux6d3bux51fdux6570}}
 
 激活函数的主要功能是提供网络的非线性建模能力，如果没有激活函数，网络只能表达线性映射，可以认为只有加入了激活函数之后深度神经网络才具备了分层的非线性映射学习能力。DCGAN在生成器网络中选用ReLU作为激活函数，最后一层使用Tanh。
 Tanh即双曲正切函数，它的输出和输入能够保持非线性单调上升和下降关系，输出以0为中心，比Sigmoid函数收敛速度更快，但还是没有改变Sigmoid函数最大的问题，即由于饱和性产生的梯度消失。
