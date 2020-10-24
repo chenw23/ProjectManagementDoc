@@ -26,6 +26,7 @@ classoption: "hyperref, a4paper"
 bibliography: biblio.bib
 header-includes:
    - \usepackage{array}
+   - \usepackage{amsmath}
 ---
 
 ```{r eval=FALSE, include=FALSE}
