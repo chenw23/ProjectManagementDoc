@@ -33,7 +33,7 @@ header-includes:
 \LARGE
 
 \begin{center}
-\textbf{项目管理计划书}
+\textbf{项目时间计划书}
 \end{center}
 
 \large
@@ -48,24 +48,12 @@ header-includes:
 针对人脸生成任务，我们在项目中将使用TensorFlow搭建一个生成式对抗网络模型，并采用LSUN数据集，ImageNet1k和celebA数据集来对模型进行训练，最终得到能够产生人脸的图像的生成器。并且，在训练好的模型的基础上，我们将会完成一个前端网页，以可视化输入生成器的噪声向量并方便用户调整输入，以及在网页上展示生成器最终生成的图像。
 
 ## 项目分解
-见表1
+根据对本项目的分析，采用图表方式描述的任务分解结果（ WBS ）如图1所示
 
-\begin{table}
-    \caption{项目进度计划}
-    \centering
-    \begin{tabular}{|p{2.0cm}<{\centering}|p{1.0cm}<{\centering}|p{2.0cm}<{\centering}|p{2.0cm}<{\centering}|p{2.0cm}<{\centering}|}
-    \hline
-    任务名称     & 耗时（天） & 开始         & 结束         \\ \hline
-    \textbf{DCGAN}    & \textbf{76}    & \textbf{2020-9-26}  & \textbf{2020-12-11} \\ \hline
-    项目分析     & 5     & 2020-9-26  & 2020-9-31  \\ \hline
-    搭建模型     & 18     & 2020-10-9  & 2020-10-27 \\ \hline
-    获取与处理数据集 & 26     & 2020-10-15 & 2020-11-10 \\ \hline
-    实现Demo   & 31    & 2020-11-10 & 2020-12-11 \\ \hline
-    \end{tabular}
-\end{table}
+![FaceGen网站建设项目的WBS](WBS.png)
 
 ## 工作描述
-见表2
+见表1
 
 \begin{table}
     \caption{任务描述}
@@ -85,10 +73,31 @@ header-includes:
     \end{tabular}
 \end{table}
 
-# 工作责任分配表
+# 项目计划
+
+## 项目进度计划
+见表2
+
+\begin{table}
+    \caption{项目进度计划}
+    \centering
+    \begin{tabular}{|p{2.0cm}<{\centering}|p{1.0cm}<{\centering}|p{2.0cm}<{\centering}|p{2.0cm}<{\centering}|p{2.0cm}<{\centering}|}
+    \hline
+    任务名称     & 耗时（天） & 开始         & 结束         \\ \hline
+    \textbf{DCGAN}    & \textbf{76}    & \textbf{2020-9-26}  & \textbf{2020-12-11} \\ \hline
+    项目分析     & 5     & 2020-9-26  & 2020-9-31  \\ \hline
+    搭建模型     & 18     & 2020-10-9  & 2020-10-27 \\ \hline
+    获取与处理数据集 & 26     & 2020-10-15 & 2020-11-10 \\ \hline
+    实现Demo   & 31    & 2020-11-10 & 2020-12-11 \\ \hline
+    \end{tabular}
+\end{table}
+
+## 工作责任分配表
+见图2
+
 ![责任分配表](1.png)
 
-# 项目计划工作列表
+## 项目计划工作列表
 见表3
 
 \begin{table}
@@ -109,11 +118,12 @@ header-includes:
     \end{tabular}
 \end{table}
 
-# 项目网络图
+## 项目网络图
+见图3
+
 ![网络图](2.png)
 
-# 甘特图
-![Gantt图](3.png)
+## 甘特图
+见图4
 
-# PERT时间分析
-根据计划评审技术推测，
+![Gantt图](3.png)
